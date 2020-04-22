@@ -11,7 +11,7 @@
 <body>
     <!-- partial:index.partial.html -->
 
-    <form class="panel-body" action="https://happy.com.tr/hcpayment/hcpayment.php" method="POST" id="frmOdeme">
+    <form class="panel-body" action="https://www.happy.com.tr/hcpayment/hcpayment.php" method="POST" id="frmOdeme">
         <input type="hidden" id="order_id" name="order_id" value="99999">
         <input type="hidden" id="email" name="email" value="test@test.com">
         <input type="hidden" id="total_price" name="total_price" value="129.99">
@@ -26,7 +26,7 @@
                 <label for="card-number">Kart Numarası</label>
 
                 <div class="input-group">
-                    <input type="text" class="form-control" id="cc_number" name="cc_number" placeholder="Kart Numarası">
+                    <input type="text" class="form-control" id="cc_number" data-inputmask="'mask': '9999 9999 9999 9999'" name="cc_number" placeholder="Kart Numarası">
                     <div id="card-logo" class="input-group-addon">
                         <img src="https://files.readme.io/d1a25b4-generic-card.png" height="20px">
                     </div>
