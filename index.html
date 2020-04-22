@@ -75,9 +75,7 @@
             $("#btnSubmit").click(function () {
                 $.ajax({
                     type: "POST",
-                    crossDomain: true,
                     url: form.attr("action"),
-                    beforeSend: setHeader,
                     data: $("#frmOdeme input").serialize(),//only input
                     success: function (json) {
                         //if (json['error']) {
