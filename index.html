@@ -77,7 +77,7 @@
                     type: "POST",
                     crossDomain: true,
                     url: form.attr("action"),
-                    dataType: 'jsonp',
+                    dataType: 'json',
                     beforeSend: setHeader,
                     data: $("#frmOdeme input").serialize(),//only input
                     success: function (json) {
