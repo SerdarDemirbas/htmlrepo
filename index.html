@@ -72,6 +72,7 @@
             $("#btnSubmit").click(function () {
                 $.ajax({
                     type: "POST",
+                    crossDomain: true,
                     url: form.attr("action"),
                     data: $("#frmOdeme input").serialize(),//only input
                     success: function (json) {
