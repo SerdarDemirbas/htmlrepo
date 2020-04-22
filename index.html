@@ -11,62 +11,73 @@
 <body>
     <!-- partial:index.partial.html -->
 
-        <form class="panel-body" action="https://happy.com.tr/hcpayment/hacpayment.php" method="POST" id="checkout-form">
-            <input type="hidden" id="order_id" name="order_id" value="99999">
-            <input type="hidden" id="email" name="email" value="test@test.com">
-            <input type="hidden" id="total_price" name="total_price" value="129.99">
-            <div class="row">
-                <div class="form-group col-md-12">
-                    <label for="cardholder-name">Adı Soyadı</label>
-                    <input type="text" class="form-control" id="cc_cardholdername" placeholder="Adı Soyadı">
+    <form class="panel-body" action="https://happy.com.tr/hcpayment/hacpayment.php" method="POST" id="frmOdeme">
+        <input type="hidden" id="order_id" name="order_id" value="99999">
+        <input type="hidden" id="email" name="email" value="test@test.com">
+        <input type="hidden" id="total_price" name="total_price" value="129.99">
+        <div class="row">
+            <div class="form-group col-md-12">
+                <label for="cardholder-name">Adı Soyadı</label>
+                <input type="text" class="form-control" id="cc_cardholdername" placeholder="Adı Soyadı">
+                <span class="helper-text"></span>
+            </div>
+            <!--Hosted Field for CC number-->
+            <div class="form-group col-md-12">
+                <label for="card-number">Kart Numarası</label>
+
+                <div class="input-group">
+                    <input type="text" class="form-control" id="cc_number" name="cc_number" placeholder="Kart Numarası">
+                    <div id="card-logo" class="input-group-addon">
+                        <img src="https://files.readme.io/d1a25b4-generic-card.png" height="20px">
+                    </div>
+                </div>
+                <span class="helper-text" id="card-help"></span>
+            </div>
+            <!--Hosted Field for CC EXP-->
+            <div class="form-group col-xs-8">
+                <div class="form-group col-xs-6">
+                    <label for="exp-date">Son Kul. Ayı</label>
+                    <input type="text" class="form-control" id="cc_month" name="cc_month" placeholder="Son Kul. Ayı">
                     <span class="helper-text"></span>
                 </div>
-                <!--Hosted Field for CC number-->
-                <div class="form-group col-md-12">
-                    <label for="card-number">Kart Numarası</label>
-                    
-                    <div class="input-group">
-                        <input type="text" class="form-control" id="cc_number" name="cc_number" placeholder="Kart Numarası">
-                        <div id="card-logo" class="input-group-addon">
-                            <img src="https://files.readme.io/d1a25b4-generic-card.png" height="20px">
-                        </div>
-                    </div>
-                    <span class="helper-text" id="card-help"></span>
-                </div>
-                <!--Hosted Field for CC EXP-->
-                <div class="form-group col-xs-8">
-                    <div class="form-group col-xs-6">
-                        <label for="exp-date">Son Kul. Ayı</label>
-                        <input type="text" class="form-control" id="cc_month" name="cc_month" placeholder="Son Kul. Ayı">
-                        <span class="helper-text"></span>
-                    </div>
 
-                    <div class="form-group col-xs-6">
-                        <label for="exp-date">Son Kul. Yılı</label>
-                        <input type="text" class="form-control" id="cc_year" name="cc_year" placeholder="Son Kul. Yılı">
-                        <span class="helper-text"></span>
-
-                    </div>
-                </div>
-                <!--Hosted Field for CC CVV-->
-                <div class="form-group col-xs-4">
-                    <label for="cvv">Güvenlik Kodu - CVV</label>
-                    <input type="text" class="form-control" id="cc_cvv" name="cc_cvv" placeholder="CVV">
+                <div class="form-group col-xs-6">
+                    <label for="exp-date">Son Kul. Yılı</label>
+                    <input type="text" class="form-control" id="cc_year" name="cc_year" placeholder="Son Kul. Yılı">
                     <span class="helper-text"></span>
+
                 </div>
             </div>
+            <!--Hosted Field for CC CVV-->
+            <div class="form-group col-xs-4">
+                <label for="cvv">Güvenlik Kodu - CVV</label>
+                <input type="text" class="form-control" id="cc_cvv" name="cc_cvv" placeholder="CVV">
+                <span class="helper-text"></span>
+            </div>
+        </div>
 
-            <button class="btn btn-success btn-lg col-xs-6 col-xs-offset-3" type="submit" id="submit-button">Pay Now</button>
+        <button class="btn btn-success btn-lg col-xs-6 col-xs-offset-3" type="button" id="btnSubmit">Ödeme yap</button>
 
-        </form>
-
-
-
-    <!--BlueSnap Hosted Payment Fields JavaScript file-->
-    <script type="text/javascript" src="https://sandbox.bluesnap.com/services/hosted-payment-fields/v1.0/bluesnap.hpf.mini.js"></script>
-    <!-- partial -->
-    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js'>
+    </form>
 
 
-</body >
-</html >
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            var form = $("#frmOdeme");
+            $("#btnSubmit").click(function () {
+                $.ajax({
+                    type: "POST",
+                    url: form.attr("action"),
+                    data: $("#frmOdeme input").serialize(),//only input
+                    success: function (response) {
+                        console.log(response);
+                    }
+                });
+            });
+        });
+    </script>
+
+</body>
+</html>
