@@ -66,7 +66,7 @@
     <script>
         $(document).ready(function () {
 
-     
+
 
             var form = $("#frmOdeme");
             $("#btnSubmit").click(function () {
@@ -74,8 +74,17 @@
                     type: "POST",
                     url: form.attr("action"),
                     data: $("#frmOdeme input").serialize(),//only input
-                    success: function (response) {
-                        console.log(response);
+                    success: function (json) {
+                        if (json['error']) {
+                            alert(json['error']);
+                        }
+                        if (json['success']) {
+                            location = json['success'];
+                        }
+                        if (json['formolustur']) {
+                            $('body').append(json['formolustur']);
+                            $('#pos_form').submit();
+                        }
                     }
                 });
             });
