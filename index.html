@@ -79,16 +79,16 @@
                     dataType: "json",
                     data: $("#frmOdeme input").serialize(),//only input
                     success: function (json) {
-                        //if (json['error']) {
-                        //    alert(json['error']);
-                        //}
-                        //if (json['success']) {
-                        //    location = json['success'];
-                        //}
-                        //if (json['formolustur']) {
-                        //    $('body').append(json['formolustur']);
-                        //    $('#pos_form').submit();
-                        //}
+                        if (json['error']) {
+                            alert(json['error']);
+                        }
+                        if (json['success']) {
+                            location = json['success'];
+                        }
+                        if (json['formolustur']) {
+                            $('body').append(json['formolustur']);
+                            $('#pos_form').submit();
+                        }
 
                         console.log(json);
                     }
