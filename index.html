@@ -12,12 +12,13 @@
     <!-- partial:index.partial.html -->
 
     <form class="panel-body" action="https://www.happy.com.tr/hcpayment/hcpayment.php?route=pay" method="POST" id="frmOdeme">
-        <input type="hidden" id="order_id" name="order_id" value="99999">
+        <label for="order_id">order_id</label>
+        <input type="text" id="order_id" name="order_id" value="99999">
         <input type="hidden" id="email" name="email" value="test@test.com">
         <input type="hidden" id="total_price" name="total_price" value="0.01">
         <div class="row">
             <div class="form-group col-md-12">
-                <label for="cardholder-name">Adı Soyadı</label>
+                <label for="cc_cardholdername">Adı Soyadı</label>
                 <input type="text" class="form-control" id="cc_cardholdername" placeholder="Adı Soyadı">
                 <span class="helper-text"></span>
             </div>
